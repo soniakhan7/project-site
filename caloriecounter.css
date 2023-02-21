@@ -1,0 +1,81 @@
+.CalorieCounter {
+  text-align: center;
+  margin-bottom: 80px;
+  margin-top: 100px;
+}
+
+.CalorieCounter p {
+    width: 800px;
+    margin: auto;
+    font-size:  18px;
+    margin-bottom: 50px;
+}
+
+.calorie-calc-form {
+    border-style: solid;
+    border-color: #faae4b ;
+    border-width: 1.5px;
+    border-radius: 30px;
+    padding: 40px;
+    width: max-content;
+    margin: auto;
+}
+
+
+#meal-item, #calories, #intake-item, #quantity{
+    height: 40px;
+    width: 200px;
+    border-style: none; 
+    border-bottom-style: solid; 
+    margin-right: 20px;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+#quantity, #calories {
+    width: 90px;
+}
+
+
+label {
+    font-weight: 500;
+}
+
+#add-meal-item, #add-to-intake, #remove-from-intake  {
+    background-color: #faae4b;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 30px;
+}
+
+#add-meal-item:hover, #add-to-intake:hover, #remove-from-intake:hover {
+    background-color: #fab55b;
+
+}
+
+#add-meal-item:active, #add-to-intake:active, #remove-from-intake:active {
+    background-color: #fad6a8;
+
+}
+
+.meal-input-section {
+    margin-bottom: 70px;
+}
+
+.total-cal {
+    margin-top: 40px;
+}
+
+.total-cal p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#update-menu-section {
+    margin-bottom: 80px;
+}
+
