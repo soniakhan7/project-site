@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample quiz</title>
+</head>
+
+<body>
+
+    <form id="meal-plan-form">
+        <h3>Question 1: Do you follow any of these diets?</h3>
+        <label><input type="radio" name="diet" value="pescatarian"> Pescatarian</label><br>
+        <label><input type="radio" name="diet" value="vegan"> Vegan</label><br>
+        <label><input type="radio" name="diet" value="vegetarian"> Vegetarian</label><br>
+        <label><input type="radio" name="diet" value="paleo"> Paleo</label><br>
+        <label><input type="radio" name="diet" value="ketogenic"> Ketogenic</label><br>
+        <label><input type="radio" name="diet" value="none" checked> I don't follow any diet</label><br>
+
+        <h3>Question 2: Do you have any food allergies?</h3>
+        <label><input type="checkbox" name="allergies" value="peanut-free"> Peanut-free</label><br>
+        <label><input type="checkbox" name="allergies" value="dairy-free"> Dairy-free</label><br>
+        <label><input type="checkbox" name="allergies" value="seafood-free"> Seafood-free</label><br>
+        <label><input type="checkbox" name="allergies" value="soy-free"> Soy-free</label><br>
+        <label><input type="checkbox" name="allergies" value="tree-nut-free"> Tree nut-free</label><br>
+        <label><input type="checkbox" name="allergies" value="gluten-free"> Gluten-free</label><br>
+        <label><input type="checkbox" name="allergies" value="none" checked> No allergies</label><br>
+
+        <h3>Question 3: What ingredients do you not want in your meal plan?</h3>
+        <label><input type="checkbox" name="ingredients" value="alcohol"> Alcohol</label><br>
+        <label><input type="checkbox" name="ingredients" value="avocado"> Avocado</label><br>
+        <label><input type="checkbox" name="ingredients" value="bacon"> Bacon</label><br>
+        <label><input type="checkbox" name="ingredients" value="beef"> Beef</label><br>
+        <label><input type="checkbox" name="ingredients" value="cilantro"> Cilantro</label><br>
+        <label><input type="checkbox" name="ingredients" value="coconut"> Coconut</label><br>
+        <label><input type="checkbox" name="ingredients" value="mayonnaise"> Mayonnaise</label><br>
+        <label><input type="checkbox" name="ingredients" value="onions"> Onions</label><br>
+        <label><input type="checkbox" name="ingredients" value="olives"> Olives</label><br>
+        <label><input type="checkbox" name="ingredients" value="none" checked> No preference</label><br>
+
+        <h3>Question 4: What cuisine types are you interested in?</h3>
+        <label><input type="checkbox" name="cuisine" value="american"> American</label><br>
+        <label><input type="checkbox" name="cuisine" value="mexican"> Mexican</label><br>
+        <label><input type="checkbox" name="cuisine" value="mediterranean"> Mediterranean</label><br>
+        <label><input type="checkbox" name="cuisine" value="kid-friendly"> Kid-friendly</label><br>
+        <label><input type="checkbox" name="cuisine" value="southern"> Southern</label><br>
+        <label><input type="checkbox" name="cuisine" value="chinese"> Chinese</label><br>
+        <label><input type="checkbox" name="cuisine" value="indian"> Indian</label><br>
+
+        <h3>Question 5: What is your cooking skill level?</h3>
+        <label><input type="radio" name="skill" value="beginner" checked> Beginner</label><br>
+        <label><input type="radio" name="skill" value="intermediate"> Intermediate</label><br>
+        <label><input type="radio" name="skill" value="advanced"> Advanced</label><br><br>
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const diets = document.querySelector('input[name="diet"]:checked').value;
+            console.log(diets);
+
+            const allergies = [];
+            const allergyInputs = document.querySelectorAll('input[name="allergies"]:checked');
+            allergyInputs.forEach((input) => {
+                allergies.push(input.value);
+                console.log(allergies);
+            });
+
+            const unwantedIngredients = [];
+            const ingredientInputs = document.querySelectorAll('input[name="ingredients"]:checked');
+            ingredientInputs.forEach((input) => {
+                unwantedIngredients.push(input.value);
+                console.log(unwantedIngredients);
+            });
+
+            const cuisineTypes = [];
+            const cuisineInputs = document.querySelectorAll('input[name="cuisine"]:checked');
+            cuisineInputs.forEach((input) => {
+                cuisineTypes.push(input.value);
+                console.log(cuisineTypes);
+            });
+
+            const skillLevel = document.querySelector('input[name="skill"]:checked').value;
+            console.log(skillLevel);
+
+            const mealPlanRequest = `Create a 5 day meal plan with the following criteria: diet: ${diets}, allergies: ${allergies.join(', ')}, cuisine type: ${cuisineTypes.join(', ')}, do not include the following ingredients: ${unwantedIngredients.join(', ')}, skill level: ${skillLevel}.`;
+            console.log(mealPlanRequest);
+
+            // Process form data
+            // ... 
+        });
+
+    </script>
+</body>
+
+</html>

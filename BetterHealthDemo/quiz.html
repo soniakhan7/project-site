@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Health Quiz</title>
+    <link rel="stylesheet" href="quiz-form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <a href="index.html"> <img src="official-assets/final_logo_alt.png" alt="logo"> </a>
+    </header>
+    <div>
+        <h1>Take our 7 question quiz to receive your personalized meal plan.</h1>
+    </div>
+    <form id="meal-plan-form">
+        <div>
+            <h3>1. What is your name?</h3>
+            <input type="text" id="username" name="username" placeholder="Enter your name">
+        </div>
+        <div class="goals-radio-group">
+            <h3>2. How can Better Health help you?</h3>
+            <input type="radio" id="goal1" name="goals" value="find new recipes">
+            <label for="goal1">
+                Plan meals and find new recipes: Discover hundreds of recipes that you'll
+                love.
+            </label><br>
+            <input type="radio" id="goal2" name="goals" value="make nutritious food choices">
+            <label for="goal2">
+                Make nutritious food choices: Eat well-balanced nutritious meals.
+            </label><br>
+            <input type="radio" id="goal3" name="goals" value="manage weight">
+            <label for="goal3">
+                Better manage your weight: Dive deep into science to lose weight and maintain your goals.
+            </label><br>
+            <input type="radio" id="goal4" name="goals" value="15-30 min quick recipes">
+            <label for="goal4">
+                Save time: Create a meal plan with quick and easy-to-cook recipes.
+            </label><br>
+        </div>
+
+        <div class="radio-group">
+            <h3>3. Do you follow any of these dies?</h3>
+            <input type="radio" id="diet-option1" name="diet" value="vegetarian">
+            <label for="diet-option1">Vegetarian</label>
+
+            <input type="radio" id="diet-option2" name="diet" value="pescatarian">
+            <label for="diet-option2">Pescatarian</label>
+
+            <input type="radio" id="diet-option3" name="diet" value="ketogenic">
+            <label for="diet-option3">Ketogenic</label>
+
+            <input type="radio" id="diet-option4" name="diet" value="paleo">
+            <label for="diet-option4">Paleolithic</label>
+
+            <input type="radio" id="diet-option5" name="diet" value="vegan">
+            <label for="diet-option5">Vegan</label>
+
+            <input type="radio" id="diet-option6" name="diet" value="ovo-vegetarian">
+            <label for="diet-option6">Ovo-Vegetarian</label>
+
+            <input type="radio" id="diet-option7" name="diet" value="lacto-vegetarian">
+            <label for="diet-option7">Lacto-Vegetarian</label><br>
+
+            <input type="radio" id="null-option" name="diet" value="no diet">
+            <label for="null-option">I don't follow any diets.</label>
+        </div>
+
+        <div class="checkbox-group">
+            <h3>4. Do you have any food allergies?</h3>
+            <input type="checkbox" id="allergy1" name="allergies" value="gluten-free">
+            <label for="allergy1">Gluten-free</label>
+
+            <input type="checkbox" id="allergy2" name="allergies" value="tree-nut-free">
+            <label for="allergy2">Tree nut-free</label>
+
+            <input type="checkbox" id="allergy3" name="allergies" value="peanut-free">
+            <label for="allergy3">Peanut-free</label>
+
+            <input type="checkbox" id="allergy4" name="allergies" value="dairy-free">
+            <label for="allergy4">Dairy-free</label>
+
+            <input type="checkbox" id="allergy5" name="allergies" value="seafood-free">
+            <label for="allergy5">Seafood-free</label>
+
+            <input type="checkbox" id="allergy6" name="allergies" value="soybean-free">
+            <label for="allergy6">Soybean-free</label>
+
+            <input type="checkbox" id="allergy7" name="allergies" value="egg-free">
+            <label for="allergy7">Egg-free</label>
+
+            <input type="checkbox" id="allergy8" name="allergies" value="sesame-free">
+            <label for="allergy8">Sesame-free</label><br>
+
+            <input type="checkbox" id="allergy0" name="allergies" value="no allergies">
+            <label for="allergy0">I don't have any allergies.</label>
+        </div>
+
+        <div class="dropdown-multiselect">
+            <h3>5. What ingredients do you not want in your meal plan?</h3>
+
+            <div class="dropdown-select">
+                <span class="selected-options">Select options</span>
+                <i class="fa fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-options">
+                <label><input type="checkbox" name="ingredients" value="no preference">No preference</label>
+                <label><input type="checkbox" name="ingredients" value="mustard">Mustard</label>
+                <label><input type="checkbox" name="ingredients" value="tomatoes">Tomatoes</label>
+                <label><input type="checkbox" name="ingredients" value="olives">Olives</label>
+                <label><input type="checkbox" name="ingredients" value="avocado">Avocado</label>
+                <label><input type="checkbox" name="ingredients" value="beets">Beets</label>
+                <label><input type="checkbox" name="ingredients" value="beef">Beef</label>
+                <label><input type="checkbox" name="ingredients" value="pork">Pork</label>
+                <label><input type="checkbox" name="ingredients" value="cilantro">Cilantro</label>
+                <label><input type="checkbox" name="ingredients" value="mayonnaise">Mayonaise</label>
+                <label><input type="checkbox" name="ingredients" value="eggs">Eggs</label>
+                <label><input type="checkbox" name="ingredients" value="coconut">Coconut</label>
+
+            </div>
+
+        </div>
+        <div class="checkbox-group">
+            <h3>6. What cuisine types are you interested in?</h3>
+            <input type="checkbox" id="cuisine1" name="cuisine" value="american">
+            <label for="cuisine1">American</label>
+
+            <input type="checkbox" id="cuisine2" name="cuisine" value="kid-friendly">
+            <label for="cuisine2">Kid-friendly</label>
+
+            <input type="checkbox" id="cuisine3" name="cuisine" value="asian">
+            <label for="cuisine3">Asian</label>
+
+            <input type="checkbox" id="cuisine4" name="cuisine" value="Mexican">
+            <label for="cuisine4">Mexican</label>
+
+            <input type="checkbox" id="cuisine5" name="cuisine" value="mediterranean">
+            <label for="cuisine5">Mediterranean</label>
+
+            <input type="checkbox" id="cuisine6" name="cuisine" value="spanish">
+            <label for="cuisine6">Spanish</label>
+
+            <input type="checkbox" id="cuisine7" name="cuisine" value="Italian">
+            <label for="cuisine7">Italian</label>
+
+            <input type="checkbox" id="cuisine8" name="cuisine" value="french">
+            <label for="cuisine8">French</label>
+
+            <input type="checkbox" id="cuisine9" name="cuisine" value="barbecue">
+            <label for="cuisine9">Barbecue</label>
+
+            <input type="checkbox" id="cuisine10" name="cuisine" value="no preference">
+            <label for="cuisine10">No preference</label>
+
+        </div>
+        <div class="radio-group">
+            <h3>7. What is your cooking skill level?</h3>
+            <input type="radio" id="level-1" name="cooking-skill" value="beginner">
+            <label for="level-1">Beginner</label>
+            <input type="radio" id="level-2" name="cooking-skill" value="intermediate">
+            <label for="level-2">Intermediate</label>
+            <input type="radio" id="level-3" name="cooking-skill" value="advanced">
+            <label for="level-3">Advanced</label>
+
+        </div>
+
+
+    </form>
+    <div class="faux-footer">
+        <h3>Done taking the quiz?</h3>
+        <button type="submit" id="submit-button" name="submit" for="meal-plan-form">Submit</button>
+    </div>
+
+
+
+    <script>
+        /*sript for dropdown feature */
+        const dropdownSelect = document.querySelector('.dropdown-multiselect .dropdown-select');
+        const dropdownOptions = document.querySelector('.dropdown-multiselect .dropdown-options');
+        const checkboxes = document.querySelectorAll('.dropdown-multiselect input[type="checkbox"]');
+        const selectedOptions = document.querySelector('.dropdown-multiselect .selected-options');
+
+        // Hide the dropdown options initially
+        dropdownOptions.style.display = 'none';
+
+        // Toggle the dropdown options on click
+        dropdownSelect.addEventListener('click', function () {
+            if (dropdownOptions.style.display === 'none') {
+                dropdownOptions.style.display = 'block';
+            } else {
+                dropdownOptions.style.display = 'none';
+            }
+        });
+
+        // Update the selected options when a checkbox is checked or unchecked
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const checkedValues = Array.from(checkboxes)
+                    .filter(function (checkbox) {
+                        return checkbox.checked;
+                    })
+                    .map(function (checkbox) {
+                        return checkbox.parentElement.textContent.trim();
+                    });
+
+                if (checkedValues.length) {
+                    selectedOptions.textContent = checkedValues.join(', ');
+                } else {
+                    selectedOptions.textContent = 'Select options';
+                }
+            });
+        });
+
+        // Hide the dropdown options when clicking outside of the dropdown
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.dropdown-multiselect')) {
+                dropdownOptions.style.display = 'none';
+            }
+        });
+
+
+
+
+        /*script for the form */
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const diets = document.querySelector('input[name="diet"]:checked').value;
+            console.log(diets);
+
+            const allergies = [];
+            const allergyInputs = document.querySelectorAll('input[name="allergies"]:checked');
+            allergyInputs.forEach((input) => {
+                allergies.push(input.value);
+                console.log(allergies);
+            });
+
+            const unwantedIngredients = [];
+            const ingredientInputs = document.querySelectorAll('input[name="ingredients"]:checked');
+            ingredientInputs.forEach((input) => {
+                unwantedIngredients.push(input.value);
+                console.log(unwantedIngredients);
+            });
+
+            const cuisineTypes = [];
+            const cuisineInputs = document.querySelectorAll('input[name="cuisine"]:checked');
+            cuisineInputs.forEach((input) => {
+                cuisineTypes.push(input.value);
+                console.log(cuisineTypes);
+            });
+
+            const skillLevel = document.querySelector('input[name="skill"]:checked').value;
+            console.log(skillLevel);
+
+            const mealPlanRequest = `Create a 5 day meal plan with the following criteria: diet: ${diets}, allergies: ${allergies.join(', ')}, cuisine type: ${cuisineTypes.join(', ')}, do not include the following ingredients: ${unwantedIngredients.join(', ')}, skill level: ${skillLevel}.`;
+            console.log(mealPlanRequest);
+
+            // Process form data
+            // ... 
+
+        });
+
+        // Add a click event listener to the submit button
+        document.getElementById('submit-button').addEventListener('click', function () {
+            // Change the current URL to the last page of the quiz
+            window.location.href = 'last_page_of_quiz.html';
+        });
+
+    </script>
+</body>
+
+</html>
