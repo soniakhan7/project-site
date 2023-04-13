@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: Inter, Arial;
+    margin: 0;
+    min-width: 1440px;
+}
+header {
+    background-color:#0B2027 ;
+    padding: 30px 110px;
+}
+
+header img {
+    max-width: 220px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 28px;
+    padding: 30px 110px;
+}
+
+h3 {
+   font-weight: 400;
+   font-size: 20px;
+}
+form {
+    padding: 0px 110px;
+}
+
+form div {
+    margin-bottom: 50px;
+}
+
+#username {
+    width: 30%;
+    padding: 12px;
+    border-width: 0 0 1.5px 0;
+    border-bottom-style: solid;
+    border-color: #939393;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 22px;
+}
+
+.goals-radio-group, .checkbox-group, .radio-group {
+    width: 80%;
+}
+
+.goals-radio-group input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .goals-radio-group label {
+    min-width: min-content;
+    width: 65%;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 18px;
+    cursor: pointer;
+    font-weight: 300;
+    margin-left: 22px;
+  }
+  
+  .goals-radio-group input[type="radio"]:checked + label,
+  .checkbox-group input[type="checkbox"]:checked + label,
+  .radio-group input[type="radio"]:checked + label{
+    color: black;
+    font-weight: 400; 
+    border: 1px solid #526860;
+    background-color: #f5f9f8;
+  }
+
+
+  .checkbox-group input[type="checkbox"],
+  .radio-group input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .checkbox-group label,
+  .radio-group label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 300;
+    width: 200px;
+    text-align: center;
+    margin-left: 22px;
+
+  }
+
+  /* dropdown css section */
+ 
+  .dropdown-multiselect {
+    position: relative;
+    display: inline-block;
+  }
+   
+  .dropdown-select {
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    cursor: pointer;
+    width: 97%;
+    margin-bottom: 0;
+    margin-left: 22px;
+    border-radius: 10px;
+  }
+   
+  .selected-options {
+    flex-grow: 1;
+  }
+   
+  .dropdown-options.active {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 22px;
+    display: block;
+  }
+
+  .dropdown-options.inactive {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    font-size: 16px;
+    font-weight: 300;
+    margin-left: 22px;
+    display: none;
+  }
+   
+  .dropdown-options label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+   
+  .dropdown-options input[type="checkbox"] {
+    margin-right: 10px;
+  }
+   
+  .dropdown-multiselect.show .dropdown-options {
+    display: block;
+    margin-left: 22px;
+  }
+  
+
+
+  .faux-footer {
+    background-color: #0B2027;
+    padding: 20px 0 50px;
+    text-align: center;
+  }
+
+  .faux-footer h3 {
+    color: white;
+    font-size: 28px ;
+    font-weight: 500;
+  }
+
+
+
+.faux-footer button {
+    text-decoration: none;
+    height: 50px;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 30px;
+    border-style: none;
+    padding: 15px 50px;
+    background-color: #f8704b ;
+    color: white;
+    cursor:pointer;
+    transition: .15s;
+}
+
+.faux-footer button:hover {
+    background-color: #36725E;
+    color: white;
+}
+
+
+.faux-footer button:active {
+    opacity: 80%;
+}
+
+
+
+/* last_page_of_quiz.html */
+
+main {
+    margin: 0 auto;
+    text-align: center;
+    width: 962px;
+}
+
+.top-main h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.top-main h3 {
+    color:#36725E;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 0;
+ 
+}
+
+.top-main p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.response {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.response div {
+  text-align: left;
+  white-space: pre-line;
+  padding: 5px;
+}
+
+.bottom-main {
+    margin-bottom: 70px;
+}
+
+#download-copy {
+    font-size: 24px;
+    font-weight: 500 ;
+    margin-bottom: 30px;
+}
+
+#button {
+    text-decoration: none;
+    height: 50px;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 30px;
+    border-style: none;
+    padding: 15px 50px;
+    background-color: #f8704b ;
+    color: white;
+    cursor:pointer;
+    transition: .15s;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+#button:hover {
+    background-color: #36725E;
+    color: white;
+}
+
+#button:active {
+    opacity: 80%;
+}
+
+h4 {
+    font-size: 24px;
+    opacity: 50%;
+    font-weight: 500;
+}
+
+#retake-quiz-copy {
+    font-size: 24px;
+    line-height: 150%;
+    font-weight: 500;
+    margin-bottom: 45px;
+}
+
+/* For the error pop-up */
+
+.popup {
+  position : fixed;
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: #fff;
+}
+
+.popup-inner .close-btn {
+  position: absolute;
+  top: 16px; 
+  right: 16px;
+}
+
