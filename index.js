@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const {Configuration, OpenAIApi} = OpenAI
 
-const token = process.env.REACT_APP_API_KEY;
+const token = process.env.CHAT_GPT_API_KEY;
 const configuration = new Configuration({apiKey: token})
 const openai = new OpenAIApi(configuration);
 
