@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import Popup from './Popup'
 import axios from 'axios'
 
-function Quiz({setName, setResponse}) {
+function Quiz({name, setName, setResponse}) {
     const [betterHealthHelp, setHelp] = useState('')
     const [diet, setDiet] = useState('')
     const [allergies, setAllergy] = useState([])
@@ -14,7 +14,8 @@ function Quiz({setName, setResponse}) {
     const [open, setOpen] = useState('false')
     const [buttonPopup, setButtonPopup] = useState(false)
     const [message, setMessage] = useState('')
-    let navigate = useNavigate();
+    let navigate = useNavigate()
+
 
     const handleChange = (addition, arr, setter) => { 
         /*if(arr[0] === 'no allergies ' || arr[0] === 'no preference ') {
@@ -55,25 +56,50 @@ function Quiz({setName, setResponse}) {
 
         Format it so each meal is bulleted and on a seperate line.
         For each new day label it with "Day X:" in bold and then create a new line.
-        Each day should have breakfast, lunch, and dinner.`
+        Each day should have breakfast, lunch, and dinner. Add at least one snack for each day.`
 
 
         
         axios
-            .post("https://apiserver-dot-bhealth-cloud.uk.r.appspot.com/api/post-prompt", { prompt })
+            .post("http://localhost:8080/", { prompt })
             .then((res) => {
-                setResponse(res.data);
+                setResponse(res.data)
             })
             .catch((err) => {
                 console.error(err) 
-                
-            });
+            })
         
         navigate('/Results') 
+    }
+
+    /*
+    const mockSubmit = () => {
+
+        const prompt = `Create a 5 day meal plan with the following criteria: 
+        diet: I don't follow any diets, 
+        main goal of the meal plan: lose weight,
+        allergies: I don't have any allergies, 
+        cuisine type: Mexican,
+        unwanted ingredients: No preference,  
+        skill level: Intermediate.
+
+        Format it so each meal is bulleted and on a seperate line.
+        For each new day label it with "Day X:" in bold and then create a new line.
+        Each day should have breakfast, lunch, and dinner. Add a snack to the end of at least one day.`
+
+        axios
+            .post("http://localhost:8080/", { prompt })
+            .then((res) => {
+                setResponse(res.data)
+            })
+            .catch((err) => {
+                console.error(err) 
+            })
         
-        
+        navigate('/Results')
 
     }
+    */
 
     
     
@@ -99,6 +125,7 @@ function Quiz({setName, setResponse}) {
             <input type="text" id="username" name="username" placeholder="Enter your name" 
             onChange={e=>setName(e.target.value)}/>
         </div>
+
         <div class="goals-radio-group">
             <h3>2. How can Better Health help you?</h3>
             <input type="radio" id="goal1" name="goals" value="find new recipes"
