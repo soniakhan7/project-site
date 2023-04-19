@@ -5,6 +5,31 @@
 
 ## Application Structure:
 
+```
+├── client
+│   ├── public
+│   ├── src
+│   ├── .gcloudignore
+│   ├── package-lock.json
+│   └── package.json
+├── server
+│   ├── .gcloudignore
+│   ├── app.yaml
+│   ├── index.js
+│   ├── package-lock.json
+│   └── package.json
+├── .dockerignore
+├── .gcloudignore
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── app.yaml
+└── nginx.conf
+```
+
+
+## Application Architecture:
+
 ## Services Used:
 - App Engine
 - Secrets Manager
@@ -44,12 +69,6 @@ Our client will call our backend API and display the returned JSON payload from 
 ## Server commands:
 0. `npm install`
 1. `gcloud app deploy`
-
-
-
-
-
-
 
 
 
