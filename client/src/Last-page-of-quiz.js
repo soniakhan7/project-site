@@ -58,7 +58,7 @@ function Results({response, name}) {
                         <h4>or</h4>
                 
                 
-                        <p id="retake-quiz-copy">Not quite what you were looking for. <br/> Let's retake the quiz to get your perfect plan!</p>
+                        <p id="retake-quiz-copy">Not quite what you were looking for? <br/> Retake the quiz to get your perfect plan!</p>
                         <button onClick={() => window.location.href = '/Quiz'} id="button">Take the quiz</button>
                 
                 </div>

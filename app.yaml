@@ -1,0 +1,18 @@
+runtime: nodejs18
+
+entrypoint: node index.js
+
+handlers:
+  # Serve static files from the "build" directory
+  - url: /(.*\.(js|css|png|jpg|gif|ico|html|json|svg|eot|otf|ttf|woff|woff2))$
+    static_files: client/build/\1
+    upload: client/build/(.*\.(js|css|png|jpg|gif|ico|html|json|svg|eot|otf|ttf|woff|woff2))$
+
+  # Serve the index.html file for all other requests
+  - url: /.*
+    static_files: client/build/index.html
+    upload: client/build/index.html
+
+  # Serve API requests from the Express.js server
+  - url: /api/.*
+    script: auto

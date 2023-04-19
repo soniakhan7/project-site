@@ -1,0 +1,12 @@
+runtime: nodejs18
+service: apiserver
+
+entrypoint: node index.js
+
+handlers:
+  # serve API requests from the Express.js server
+  - url: /api/.*
+    script: auto
+
+    
+
