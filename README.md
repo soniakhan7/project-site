@@ -3,8 +3,31 @@
 # Deploying to Google Cloud:
 - Our code is deployed using a decoupled methodology keeping the client and server seperate in terms of compute and addresses.
 
-
 ## Application Structure:
+
+## Services Used:
+- App Engine
+- Secrets Manager
+
+## Client:
+
+### Client app.yaml:
+
+### Client commands
+
+
+## Server:
+
+### Server app.yaml:
+
+### Server commands:
+
+### Api Routes:
+
+### Secret Handling:
+
+
+
 Our client will call our backend API and display the returned JSON payload from Open.AI on our frontend.
 
 ### Client:
