@@ -29,6 +29,12 @@
 
 
 ## Application Architecture:
+- We are using 2 App Engine services for the frontend and backend.
+- We are additionally using secrets manager to hold our API key and call it within the code.
+
+![App Struct](https://github.com/soniakhan7/bhealth-app/blob/main/app_struct.png)
+
+
 
 ## Google Cloud Services Used:
 - [App Engine](https://cloud.google.com/appengine): Host our services and provide compute
@@ -39,6 +45,10 @@
 - Our client will call our backend API and display the returned JSON payload from Open.AI on our frontend.
 
 ### Client app.yaml:
+
+- Using Node 18 because it is the current long term support build of node.
+- We use regular expression to upload all the static files from our build of the react app.
+- We use the index.html as the entry point to the rest of the app including static images. 
 
 ```
 runtime: nodejs18
@@ -71,14 +81,11 @@ handlers:
 - Runs the Express.js server where we make calls to Open.AI along with our secret manager request to keep our code secure.
 
 ### Server app.yaml:
+- Using Node 18 because it is the current long term support build of node.
+- We define our app route root which is `/api/`
+- We use the index.js as the entry point in our express server.
+- the service: defines the name of the service in gcp. 
 
-### Server commands:
-0. `npm install`
-1. `gcloud app deploy`
-
-### Api Routes:
-
-### Secret Handling:
 
 ```
 runtime: nodejs18
@@ -90,12 +97,73 @@ handlers:
   # serve API requests from the Express.js server
   - url: /api/.*
     script: auto
+ ```
+
+### Server commands:
+0. `npm install`
+1. `gcloud app deploy`
+
+### API Routes:
+
+We define our api routes using best pratices of having a route `api` then following command. 
+ex. `/api/hello`
+
+
+
+#### GET `/api/hello`:
+Returns: A string HTML 
+Purpose: a health check to see if our API is up without hitting our other endpoints.
+
+```
+app.get('/api/hello', async(req, res) => {
+    res.send("hello from express server");
+});
+```
+
+#### POST `api/post-prompt`:
+Returns: JSON payload from OpenAI after giving a prompt response.
+Purpose: To handle our Response from OpenAI and serving to our frontend.
+
+```
+ app.post("/api/post-prompt", async (req, res) => {
+        const { prompt } = req.body;
+
+        const completion = await openai.createCompletion ({
+            model: 'text-davinci-003',
+            max_tokens: 400, 
+            temperature: 0, 
+            prompt: prompt,
+
+        });
 ```
 
 
 
 
+### Secret Handling:
 
+We use an async function that returns a promise (an object we wait to retrive) that retrives our API key and uses in our API endpoint. 
+
+This allows us to keep our secrets secured and usable by other services.
+
+```
+async function useApi() {
+    try {
+        const client = new SecretManagerServiceClient();
+        const [version] = await client.accessSecretVersion({
+            name: "projects/857505229555/secrets/chat_gpt_api_key/versions/latest",
+        });
+        const apiKey = version.payload.data.toString();
+        return apiKey
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
+}
+
+
+
+```
 
 
 
