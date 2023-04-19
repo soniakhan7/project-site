@@ -19,8 +19,8 @@ Our client will call our backend API and display the returned JSON payload from 
 2. cd into root directory and run `gcloud app deploy` NOTE: must be authed in gcloud locally or using a service account
 
 ## Server commands:
-1. `npm install`
-2. `gcloud app deploy`
+0. `npm install`
+1. `gcloud app deploy`
 
 
 
