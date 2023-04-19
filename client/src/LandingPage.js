@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 function Home () {
 
+    const [mealItems, setMealItem] = useState([])
+    const [totalCal, setTotalCal] = useState(0)
     const [open, setOpen] = useState([true, true, true, true, true, true]);
 
     function handleArr(i) {
@@ -16,6 +18,28 @@ function Home () {
 
         setOpen(newArr);
     }
+
+    const addMealItem = (meal, calories) => {
+        if(mealItems.length === 0) {
+            setMealItem({mealName: meal, numCalories: calories})
+        }
+        const next_arr = [...mealItems, {mealName: meal, numCalories: calories}];
+        setMealItem(next_arr)
+        
+    }
+
+    const handleCal = (index, quantity, action) => {
+        var additionInt = parseInt(mealItems[index].numCalories, 10);
+        var tempCal = totalCal
+        if(action === "Add") {
+            tempCal += (additionInt * quantity)
+        }
+        else {
+            tempCal -= (additionInt * quantity)
+        }
+        setTotalCal(tempCal)
+    }
+
 
     return (
         <div>
@@ -38,7 +62,7 @@ function Home () {
         {/*right-side nav*/}
         <div class="right-nav-sec">
             <div>
-                <Link class="quiz-cta-btn" to="/Quiz"> Take the quiz </Link>
+                <Link class="quiz-cta-btn" to="/QuizFront"> Take the quiz </Link>
             </div>
         </div>
     </header>
@@ -238,14 +262,59 @@ function Home () {
             <div class="cta-content">
                 <h2>Embrace a healthier lifestyle and discover your perfect plate!</h2>
                 <p>Let's start your journey to a happier and more nutritious you now.</p>
-                <Link class="quiz-cta-btn" to="/Quiz"> Take the quiz </Link>
+                <Link class="quiz-cta-btn" to="/QuizFront"> Take the quiz </Link>
             </div>
         </section>
+        {/*Calorie Counter/*/}
+        <div class="CalorieCounter">
+            <h2>Calorie Counter</h2>
+            <p>Effortlessly track your daily calorie intake and achieve your health goals with our accurate and
+                user-friendly calorie counter tool. </p>
+
+            <div class="calorie-calc-form">
+
+                    <div class="meal-input-section">
+                        <label for="meal-item">Meal:</label>
+                        <input type="text" id="meal-item" name="meal-item" placeholder="Add meal item"/>
+                        <label for="calories">Calories:</label>
+                        <input type="number" id="calories" name="calories"/> <br/>
+                        <button id="add-meal-item" onClick={() => 
+                        addMealItem(document.getElementById("meal-item").value, document.getElementById("calories").value)}>Add Meal</button>
+                    </div>
+                    <div>
+                        <label for="intake-item">Intake Item:</label>
+                        <select id="intake-item">
+                            {mealItems.map((mealItems, index) => {
+                                return (
+                                    <option key={index} value={index}>{mealItems.mealName}</option> 
+                                )
+                            })}
+                        </select>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity"/>
+                        <br/>
+                        <button id="add-to-intake" 
+                        onClick={() => handleCal(document.getElementById("intake-item").value, 
+                        document.getElementById("quantity").value, "Add")}
+                        > Add meal to intake </button>
+                        <button id="remove-from-intake"
+                        onClick={() => handleCal(document.getElementById("intake-item").value,
+                        document.getElementById("quantity").value, "Remove")}
+                        > Remove meal from intake</button>
+                    </div>
+
+                    <div class="total-cal">
+                        <div>Total Calories: {totalCal}</div>
+                    </div>
+
+            </div>
+        </div>
 
         {/*FAQ section of webpage. Implement javascript to reveal faq*/}
         <section class="faq-section">
 
-            <h2>
+            <h2> 
                 Frequently Asked <br/>Questions
             </h2>
 
@@ -353,3 +422,4 @@ function Home () {
 }
 
 export default Home;
+           
