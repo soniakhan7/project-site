@@ -1,4 +1,36 @@
-# Getting Started with Create React App
+
+
+# Deploying to Google Cloud:
+- Our code is deployed using a decoupled methodology keeping the client and server seperate in terms of compute and addresses.
+
+
+## Application Structure:
+Our client will call our backend API and display the returned JSON payload from Open.AI on our frontend.
+
+### Client:
+- Holds the React Frontend and client calls for our API wrapper in the server code.
+
+### Server:
+- Runs the Express.js server where we make calls to Open.AI along with our secret manager request to keep our code secure.
+
+## Client commands:
+0. `npm install`
+1. `npm run build`
+2. cd into root directory and run `gcloud app deploy` NOTE: must be authed in gcloud locally or using a service account
+
+## Server commands:
+1. `npm install`
+2. `gcloud app deploy`
+
+
+
+
+
+
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
