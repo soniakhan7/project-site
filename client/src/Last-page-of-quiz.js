@@ -1,19 +1,38 @@
 import './quiz-form.css'
 import jsPDF from 'jspdf';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Results({response, name}) {
+function Results({response, name, setName, setResponse}) {
+
+    useEffect(()=> {
+        const nameS = JSON.parse(localStorage.getItem("nameStored"));
+        const responseS = JSON.parse(localStorage.getItem("responseStored"));
+        if(name === "" && response === "Loading your meal plan...") {
+            setName(nameS) 
+            setResponse(responseS)  
+                 
+        }
+    });
+
+    useEffect(() => {
+        localStorage.setItem("nameStored", JSON.stringify(name))
+        localStorage.setItem("responseStored", JSON.stringify(response))
+    }, [name, response])
+
 
     const handleDownload = () => {
         if(response === 'Loading your meal plan...') {
             return 
         }
-        const pdf = new jsPDF('p', 'pt');
+        const pdf = new jsPDF({
+            orientation: "p"
+        });
 
         const output = name + "'s Meal Plan " + response + "\r\n\r\n BetterHealth";
 
-        pdf.text(20, 20, output);
+        pdf.text(output, 10, 10, {maxWidth: 190});
 
         pdf.save("MyMealPlan.pdf");
     }
@@ -46,11 +65,16 @@ function Results({response, name}) {
 
                 </div>
 
-                <div id="response" className='response'>
-                    <div>{response}</div>
-                </div>
-
                 <div class=" bottom-main">
+
+                        <div id="response" className='response'>
+                            <div>
+                                 
+                                {response}
+                            </div>
+                        </div>
+
+                
                     
                         <p id="download-copy">To download your meal plan click the button below.</p>
                         <button id="button" onClick={handleDownload}>Download</button>
@@ -58,7 +82,7 @@ function Results({response, name}) {
                         <h4>or</h4>
                 
                 
-                        <p id="retake-quiz-copy">Not quite what you were looking for? <br/> Retake the quiz to get your perfect plan!</p>
+                        <p id="retake-quiz-copy">Not quite what you were looking for. <br/> Let's retake the quiz to get your perfect plan!</p>
                         <button onClick={() => window.location.href = '/Quiz'} id="button">Take the quiz</button>
                 
                 </div>
