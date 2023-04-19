@@ -7,68 +7,99 @@
 
 ```
 ├── client
-│   ├── public
-│   ├── src
-│   ├── .gcloudignore
-│   ├── package-lock.json
-│   └── package.json
+│   ├── public                  --> Holds our React public files (images static files) 
+│   ├── src                     --> Contains our React app code 
+│   ├── .gcloudignore           --> config for ignoring node_modules and builds for GCP.
+│   ├── package-lock.json       --> NPM dependency state 
+│   └── package.json            --> NPM dependency defined 
 ├── server
-│   ├── .gcloudignore
-│   ├── app.yaml
-│   ├── index.js
-│   ├── package-lock.json
-│   └── package.json
-├── .dockerignore
-├── .gcloudignore
-├── .gitignore
-├── Dockerfile
-├── README.md
-├── app.yaml
-└── nginx.conf
+│   ├── .gcloudignore           --> config for ignoring node_modules and builds  
+│   ├── app.yaml                --> config to start our Express.js server 
+│   ├── index.js                --> Entry point for our Express.js server 
+│   ├── package-lock.json       --> NPM dependency state  
+│   └── package.json            --> NPM dependency defined  
+├── .dockerignore               --> config for ignoring files for Docker 
+├── .gcloudignore               --> config for ignoring node_modules and builds for GCP. 
+├── .gitignore                  --> config for ignoring files in our git repo  
+├── Dockerfile                  --> Docker file  
+├── README.md                   --> This current file your reading now!  
+├── app.yaml                    --> Config to start our react frotend for App engine.  
+└── nginx.conf                  --> Config for nginx  
 ```
 
 
 ## Application Architecture:
 
-## Services Used:
-- App Engine
-- Secrets Manager
+## Google Cloud Services Used:
+- [App Engine](https://cloud.google.com/appengine): Host our services and provide compute
+- [Secrets Manager](https://cloud.google.com/secret-manager): Store our secrets safely for our API.
 
 ## Client:
+- Holds the React Frontend and client calls for our API wrapper in the server code.
+- Our client will call our backend API and display the returned JSON payload from Open.AI on our frontend.
 
 ### Client app.yaml:
 
+```
+runtime: nodejs18
+
+entrypoint: node index.js
+
+handlers:
+  # Serve static files from the "build" directory
+  - url: /(.*\.(js|css|png|jpg|gif|ico|html|json|svg|eot|otf|ttf|woff|woff2))$
+    static_files: client/build/\1
+    upload: client/build/(.*\.(js|css|png|jpg|gif|ico|html|json|svg|eot|otf|ttf|woff|woff2))$
+
+  # Serve the index.html file for all other requests
+  - url: /.*
+    static_files: client/build/index.html
+    upload: client/build/index.html
+
+  # Serve API requests from the Express.js server
+  - url: /api/.*
+    script: auto
+```
+
 ### Client commands
+0. `npm install`
+1. `npm run build`
+2. cd into root directory and run `gcloud app deploy` NOTE: must be authed in gcloud locally or using a service account
 
 
 ## Server:
+- Runs the Express.js server where we make calls to Open.AI along with our secret manager request to keep our code secure.
 
 ### Server app.yaml:
 
 ### Server commands:
+0. `npm install`
+1. `gcloud app deploy`
 
 ### Api Routes:
 
 ### Secret Handling:
 
+```
+runtime: nodejs18
+service: apiserver
+
+entrypoint: node index.js
+
+handlers:
+  # serve API requests from the Express.js server
+  - url: /api/.*
+    script: auto
+```
 
 
-Our client will call our backend API and display the returned JSON payload from Open.AI on our frontend.
 
-### Client:
-- Holds the React Frontend and client calls for our API wrapper in the server code.
 
-### Server:
-- Runs the Express.js server where we make calls to Open.AI along with our secret manager request to keep our code secure.
 
-## Client commands:
-0. `npm install`
-1. `npm run build`
-2. cd into root directory and run `gcloud app deploy` NOTE: must be authed in gcloud locally or using a service account
 
-## Server commands:
-0. `npm install`
-1. `gcloud app deploy`
+
+
+
 
 
 
