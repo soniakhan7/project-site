@@ -400,7 +400,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 40px;  
+    padding: 0;
 }
 
 .faq-section h2 {
@@ -425,7 +425,6 @@ h2 {
     display: flex;
     align-items: center;
     max-height: 60px;
-    cursor: pointer;
 }
 
 .faq-question h3 {
@@ -436,14 +435,24 @@ h2 {
 }
 
 .faq-toggle {
-    background-color: rgb(0, 0, 0);
+    background-color: white;
     border: none;
     cursor: pointer;
 }
   
+/* .faq-answer {
+    max-height: 0;
+    font-weight: 300;
+    overflow: hidden;
+    padding-left: 30px;
+    margin: 0;
+    transition: max-height 0.3s ease-out;
+} */
+
 .faq-answer.active {
     font-weight: 300;
     padding-left: 30px;
+    overflow: hidden;
     margin: 0;
     transition: max-height 0.3s ease-out;
     display: block;
@@ -456,7 +465,7 @@ h2 {
     padding-left: 30px;
     margin: 0;
     transition: max-height 0.3s ease-out;
-    display: none;
+    /* display: none; */
 }
 
 .faq-answer a {
@@ -466,6 +475,7 @@ h2 {
 .faq-answer a:hover {
     color:#c3583b
 }
+
 
 .CalorieCounter {
     text-align: center;
@@ -547,8 +557,3 @@ h2 {
   #update-menu-section {
       margin-bottom: 80px;
   }
-  
-
-
-
-

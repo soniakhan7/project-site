@@ -3,6 +3,7 @@ import './footer.css'
 import './nav.css'
 import './home-main.css'
 import { useState } from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 
 
 function Home () {
@@ -376,7 +377,7 @@ function Home () {
                         <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
                         <h3>What kind of recipes are included in the meal plan?</h3>
                     </div>
-                    <div className={`faq-answer ${open[4] ? 'inactive' : 'active'}`}>
+                    <div class={`faq-answer ${open[4] ? 'inactive' : 'active'}`}>
                         <p>All of our recipes are designed to be healthy, nutritious, and delicious. They're also easy
                             to prepare and follow, making meal prep a breeze.</p>
                     </div>
@@ -386,7 +387,7 @@ function Home () {
                         <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
                         <h3>Is there support available if I have questions or need help with my meal plan?</h3>
                     </div>
-                    <div className={`faq-answer ${open[5] ? 'inactive' : 'active'}`}>
+                    <div class={`faq-answer ${open[5] ? 'inactive' : 'active'}`}>
                         <p>Yes, our customer support team is available to answer any questions you may have and provide
                             assistance with your meal plan.
                         </p>
@@ -412,6 +413,9 @@ function Home () {
                 <div class="footer-contact">
                     <p>Got a question? <br/> Contact us.</p>
                     <a href="mailto:#">Hello@betterhealth.com</a>
+                </div>
+                <div class="copyright">
+                    <p> © Copyright 2023 Sonia Khan, Brianna Knight, Clea Lacks, Sahib Othi, Austin Roy-Stewart, Allen Kagle</p>
                 </div>
             </div>
 

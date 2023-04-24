@@ -11,7 +11,7 @@ function App() {
     const [name, setName] = useState('')
     const [response, setResponse] = useState('Loading your meal plan...')
 
-
+    
     return (
     <div>
         <BrowserRouter>
@@ -26,6 +26,7 @@ function App() {
     </BrowserRouter>
   </div>
   )
+  
 }
 
 export default App;
