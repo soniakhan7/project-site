@@ -5,11 +5,11 @@
 
 
 ## Path Ways:
-`/Login` is used to login and take the Quiz if you are not logged in you are not able to take the Quiz
-`/QuizFront` is a landing page for the Quiz 
-`/Quiz` is where the actual Quiz is 
-`/Results` is the returned value of Results
-`/AccountHistory` is the past 5 Quiz results for a auth and logged in user
+- `/Login` is used to login and take the Quiz if you are not logged in you are not able to take the Quiz
+- `/QuizFront` is a landing page for the Quiz 
+- `/Quiz` is where the actual Quiz is 
+- `/Results` is the returned value of Results
+- `/AccountHistory` is the past 5 Quiz results for a auth and logged in user
 
 ## Application Structure:
 
