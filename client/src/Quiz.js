@@ -33,7 +33,7 @@ function Quiz({name, setName, setResponse}) {
         
         if(arr[0].substr(0, 3) !== 'No ' && addition.substr(0, 3) === 'No ') {
             document.getElementById(id).checked = false;
-            setMessage('You cannot add this option with the option(s) already set.')
+            setMessage('You cannot add this option with the option(s) already selected.')
             setButtonPopup(true)
             return
         }

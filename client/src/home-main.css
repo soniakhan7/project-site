@@ -440,9 +440,7 @@ h2 {
 
 }
 
-.faq-toggle {
-    background-color: white;
-    border: none;
+.faq-arrow {
     cursor: pointer;
 }
 

@@ -324,8 +324,8 @@ function Home () {
 
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(0)}>
-                        <FontAwesomeIcon icon={open[0] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(0)}><FontAwesomeIcon icon={open[0] ? faChevronRight : faChevronDown} /></span>
                         <h3>What makes better health different from others?</h3>
                     </div>
                     <div className={`faq-answer ${open[0] ? 'inactive' : 'active'}`}>
@@ -335,8 +335,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(1)}>
-                        <FontAwesomeIcon icon={open[1] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(1)}><FontAwesomeIcon icon={open[1] ? faChevronRight : faChevronDown} /></span>
                         <h3>How does the quiz work? </h3>
                     </div>
                     <div className={`faq-answer ${open[1] ? 'inactive' : 'active'}`}>
@@ -347,8 +347,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(2)}>
-                        <FontAwesomeIcon icon={open[2] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(2)}><FontAwesomeIcon icon={open[2] ? faChevronRight : faChevronDown} /></span>
                         <h3>Is there a limit to the number of meal plans that I can create? </h3>
                     </div>
                     <div className={`faq-answer ${open[2] ? 'inactive' : 'active'}`}>
@@ -357,8 +357,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(3)}>
-                        <FontAwesomeIcon icon={open[3] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(3)}><FontAwesomeIcon icon={open[3] ? faChevronRight : faChevronDown} /></span>
                         <h3>What diets are supported?</h3>
                     </div>
                     <div className={`faq-answer ${open[3] ? 'inactive' : 'active'}`}>
@@ -375,8 +375,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(4)}>
-                        <FontAwesomeIcon icon={open[4] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(4)}><FontAwesomeIcon icon={open[4] ? faChevronRight : faChevronDown} /></span>
                         <h3>What kind of recipes are included in the meal plan?</h3>
                     </div>
                     <div class={`faq-answer ${open[4] ? 'inactive' : 'active'}`}>
@@ -385,8 +385,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(5)}>
-                        <FontAwesomeIcon icon={open[5] ? faChevronRight : faChevronDown} />
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(5)}><FontAwesomeIcon icon={open[5] ? faChevronRight : faChevronDown} /></span>
                         <h3>Is there support available if I have questions or need help with my meal plan?</h3>
                     </div>
                     <div class={`faq-answer ${open[5] ? 'inactive' : 'active'}`}>
