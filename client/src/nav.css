@@ -1,5 +1,5 @@
 
-header {
+.nav {
     display: flex;
     align-items: center;
     height: 100px;
@@ -8,17 +8,12 @@ header {
     justify-content: space-between;
 }
 
-header a {
+.nav a {
     text-decoration: none;
-    color: rgb(56, 56, 56);
     font-weight: 400;
     transition: 0.15s;
 }
 
-
-header a:hover {
-    color:#c3583b;
-}
 
 .left-nav-sec {
     display: inherit;
