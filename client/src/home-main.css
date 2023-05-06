@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
-
 body {
-    font-family: Inter, Arial; 
-    max-width: 100%;   
+    font-family: Inter, Arial;
+    margin: 0 auto; 
+    max-width: 1512px; 
+    min-width: 1440px;
+    
 }
 
 a {
@@ -30,9 +31,9 @@ h2 {
 .hero-sec {
     display:flex;
     background-color: #F9F7F5;
-    margin-left: 10vh; 
-    margin-right: 10vh;
-    border-radius: 10vh;
+    margin-left: 60px; 
+    margin-right: 60px;
+    border-radius: 30px;
     max-width: 100%;
 }
 
@@ -63,8 +64,6 @@ h2 {
     color: #474747;
     margin-bottom: 40px;
 }
-
-
 .r-hero-sec {
     padding: 30px 20px 20px 0px;
     width: 51%;
@@ -78,11 +77,6 @@ h2 {
   
 }
 
-.hero-button {
-    text-align: center;
-    margin-right: 20%;
-}
-
 .hero-cta-btn {
     height: 50px;
     font-weight: 400;
@@ -92,7 +86,7 @@ h2 {
     padding: 15px 35px;
     background-color: #f8704b ;
     color: white;
-    cursor: pointer;
+    cursor:pointer;
     transition: .15s;
     
 }
@@ -213,13 +207,13 @@ h2 {
 }
 
 .B-sec-left img {
-    width: 60vh;
+    width: 500px;
 }
 
 .B-sec-right {
-    max-height: 80vh;
+    max-height: 600px;
     margin-left: 5%;
-    padding: 5vh;
+    padding: 30px;
 }
 
 .B-sec-right h2 {
@@ -233,23 +227,23 @@ h2 {
         justify-content: space-between;
         align-items: top;
         width: 100%;
-        margin-bottom: 5vh;
-        margin-top: 5vh; 
+        margin-bottom: 30px;
+        margin-top: 60px; 
 }
 
 .B-div {
     width: 45%; /* or any other desired width */
-    padding: 2vh;
-    margin-bottom: 2vh;
+    padding: 10px;
+    margin-bottom: 30px;
 }
 
 .B-div img{
-    width: 6vh;
+    width: 44px;
   
 }
 
 .B-div h3 {
-    margin-top: 9px;
+    margin-top:9px;
     margin-bottom: 0;
     font-size: 20px;
     font-weight: 500;
@@ -440,11 +434,11 @@ h2 {
 
 }
 
-.faq-arrow {
+.faq-toggle {
+    background-color: white;
+    border: none;
     cursor: pointer;
 }
-
-
   
 /* .faq-answer {
     max-height: 0;
@@ -482,7 +476,6 @@ h2 {
     color:#c3583b
 }
 
-/* Calorie Counter */
 
 .CalorieCounter {
     text-align: center;

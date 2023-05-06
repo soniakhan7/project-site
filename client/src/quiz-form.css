@@ -3,7 +3,7 @@
 body {
     font-family: Inter, Arial;
     margin: 0;
-    min-width: 100%
+    min-width: 1440px;
 }
 header {
     background-color:#0B2027 ;
@@ -11,7 +11,7 @@ header {
 }
 
 header img {
-    max-width: 30vh;
+    max-width: 220px;
 }
 
 h1 {
