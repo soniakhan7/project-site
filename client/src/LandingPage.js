@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import './footer.css'
 import './nav.css'
 import './home-main.css'
 import { useState } from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 
 
 function Home () {
@@ -51,7 +55,7 @@ function Home () {
             </head>
             <body>
             {/*Nav section of site*/}
-    <header>
+    <div className="nav">
         {/*left-side nav*/}
         <div class="left-nav-sec">
             <div class="nav-logo">
@@ -62,10 +66,10 @@ function Home () {
         {/*right-side nav*/}
         <div class="right-nav-sec">
             <div>
-                <Link class="quiz-cta-btn" to="/QuizFront"> Take the quiz </Link>
+                <Link className="quiz-cta-btn" to="/QuizFront"> Take the quiz </Link>
             </div>
         </div>
-    </header>
+    </div>
 
     {/*Hero section*/}
     <section class="hero-sec">
@@ -82,7 +86,7 @@ function Home () {
                     and more convenient for you. Take our quiz and create a free 5-day personalized meal plan today!
                 </p>
 
-                <a class="hero-cta-btn" href="form-entry.html"> Take the quiz </a>
+                <div className='hero-button'><Link to="/QuizFront" class="hero-cta-btn"> Take the quiz </Link></div>
             </div>
             <div class="hero-trustmarks">
                 <span>
@@ -320,9 +324,8 @@ function Home () {
 
             <div class="faq-container">
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(0)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i>
-                        </button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(0)}><FontAwesomeIcon icon={open[0] ? faChevronRight : faChevronDown} /></span>
                         <h3>What makes better health different from others?</h3>
                     </div>
                     <div className={`faq-answer ${open[0] ? 'inactive' : 'active'}`}>
@@ -332,8 +335,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(1)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(1)}><FontAwesomeIcon icon={open[1] ? faChevronRight : faChevronDown} /></span>
                         <h3>How does the quiz work? </h3>
                     </div>
                     <div className={`faq-answer ${open[1] ? 'inactive' : 'active'}`}>
@@ -344,8 +347,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(2)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(2)}><FontAwesomeIcon icon={open[2] ? faChevronRight : faChevronDown} /></span>
                         <h3>Is there a limit to the number of meal plans that I can create? </h3>
                     </div>
                     <div className={`faq-answer ${open[2] ? 'inactive' : 'active'}`}>
@@ -354,8 +357,8 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(3)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(3)}><FontAwesomeIcon icon={open[3] ? faChevronRight : faChevronDown} /></span>
                         <h3>What diets are supported?</h3>
                     </div>
                     <div className={`faq-answer ${open[3] ? 'inactive' : 'active'}`}>
@@ -372,21 +375,21 @@ function Home () {
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(4)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(4)}><FontAwesomeIcon icon={open[4] ? faChevronRight : faChevronDown} /></span>
                         <h3>What kind of recipes are included in the meal plan?</h3>
                     </div>
-                    <div className={`faq-answer ${open[4] ? 'inactive' : 'active'}`}>
+                    <div class={`faq-answer ${open[4] ? 'inactive' : 'active'}`}>
                         <p>All of our recipes are designed to be healthy, nutritious, and delicious. They're also easy
                             to prepare and follow, making meal prep a breeze.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question" onClick={() => handleArr(5)}>
-                        <button class="faq-toggle"><i class="fa fa-chevron-right"></i></button>
+                    <div class="faq-question">
+                        <span className='faq-arrow' onClick={() => handleArr(5)}><FontAwesomeIcon icon={open[5] ? faChevronRight : faChevronDown} /></span>
                         <h3>Is there support available if I have questions or need help with my meal plan?</h3>
                     </div>
-                    <div className={`faq-answer ${open[5] ? 'inactive' : 'active'}`}>
+                    <div class={`faq-answer ${open[5] ? 'inactive' : 'active'}`}>
                         <p>Yes, our customer support team is available to answer any questions you may have and provide
                             assistance with your meal plan.
                         </p>
@@ -412,6 +415,9 @@ function Home () {
                 <div class="footer-contact">
                     <p>Got a question? <br/> Contact us.</p>
                     <a href="mailto:#">Hello@betterhealth.com</a>
+                </div>
+                <div class="copyright">
+                    <p> © Copyright 2023 Sonia Khan, Brianna Knight, Clea Lacks, Sahib Othi, Austin Roy-Stewart, Allen Kagle</p>
                 </div>
             </div>
 
