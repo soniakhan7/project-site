@@ -1,10 +1,12 @@
 import './quiz-form.css'
 import jsPDF from 'jspdf';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Results({response, name, setName, setResponse}) {
+    const navigate = useNavigate();
+
 
     useEffect(()=> {
         const nameS = JSON.parse(localStorage.getItem("nameStored"));
@@ -21,6 +23,14 @@ function Results({response, name, setName, setResponse}) {
         localStorage.setItem("responseStored", JSON.stringify(response))
     }, [name, response])
 
+      // Clear results when navigating away from the page
+    useEffect(() => {
+        return () => {
+        setResponse('Loading your meal plan...');
+        };
+    }, []);
+
+
 
     const handleDownload = () => {
         if(response === 'Loading your meal plan...') {
@@ -35,7 +45,11 @@ function Results({response, name, setName, setResponse}) {
         pdf.text(output, 10, 10, {maxWidth: 190});
 
         pdf.save("MyMealPlan.pdf");
-    }
+    };
+
+    const handleRetakeQuiz = () => {
+        navigate('/Quiz');
+    };
     
     return (
     <>
@@ -83,8 +97,9 @@ function Results({response, name, setName, setResponse}) {
                 
                 
                         <p id="retake-quiz-copy">Not quite what you were looking for. <br/> Let's retake the quiz to get your perfect plan!</p>
-                        <button onClick={() => window.location.href = '/Quiz'} id="button">Take the quiz</button>
-                
+                        <button onClick={handleRetakeQuiz} id="button">
+                            Take the quiz
+                        </button>
                 </div>
 
             </main>

@@ -80,7 +80,7 @@ function Quiz({name, setName, setResponse}) {
 
         
         axios
-            .post("http://localhost:8080/", { prompt })
+            .post("https://apiserver-dot-bhealth-cloud.uk.r.appspot.com/api/post-prompt", { prompt })
             .then((res) => {
                 setResponse(res.data)
             })
