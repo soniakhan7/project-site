@@ -3,6 +3,14 @@
 # Deploying to Google Cloud:
 - Our code is deployed using a decoupled methodology keeping the client and server seperate in terms of compute and addresses.
 
+
+## Path Ways:
+`/Login` is used to login and take the Quiz if you are not logged in you are not able to take the Quiz
+`/QuizFront` is a landing page for the Quiz 
+`/Quiz` is where the actual Quiz is 
+`/Results` is the returned value of Results
+`/AccountHistory` is the past 5 Quiz results for a auth and logged in user
+
 ## Application Structure:
 
 ```
@@ -31,6 +39,7 @@
 ## Application Architecture:
 - We are using 2 App Engine services for the frontend and backend.
 - We are additionally using secrets manager to hold our API key and call it within the code.
+- Firebase allows us to use Auth to store use credentials and their data
 
 ![App Struct](https://github.com/soniakhan7/bhealth-app/blob/main/app_struct.png)
 
