@@ -1,10 +1,14 @@
 import './quiz-form.css'
-import {React, useState} from 'react'
+import {React, useState, } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import Popup from './Popup'
 import axios from 'axios'
+import { addQuizResult } from "./firebaseConfig";
 
-function Quiz({name, setName, setResponse}) {
+
+
+
+function Quiz({name, setName, setResponse, user}) {
     const [betterHealthHelp, setHelp] = useState('')
     const [diet, setDiet] = useState('')
     const [allergies, setAllergy] = useState([])
@@ -14,6 +18,7 @@ function Quiz({name, setName, setResponse}) {
     const [open, setOpen] = useState('false')
     const [buttonPopup, setButtonPopup] = useState(false)
     const [message, setMessage] = useState('')
+
     let navigate = useNavigate()
 
 
@@ -54,42 +59,56 @@ function Quiz({name, setName, setResponse}) {
         }
 
 
+        const [isLoading, setIsLoading] = useState(false);
 
-
-     const handleSubmit = () => {
-
-        if(betterHealthHelp === '' || diet === '' || cookingLevel === '' || allergies.length === 0 ||
-        unwantedIngredients.length === 0 || cuisine.length === 0) {
-            setMessage('All questions must be answered.')
-            setButtonPopup(true)
-            return 
-        }
+        const handleSubmit = async () => {
+            if (
+              betterHealthHelp === "" ||
+              diet === "" ||
+              cookingLevel === "" ||
+              allergies.length === 0 ||
+              unwantedIngredients.length === 0 ||
+              cuisine.length === 0
+            ) {
+              setMessage("All questions must be answered.");
+              setButtonPopup(true);
+              return;
+            }
         
-        const prompt = `Create a 5 day meal plan with the following criteria: 
-        diet: ${diet}, 
-        main goal of the meal plan: ${betterHealthHelp},
-        allergies: ${allergies}, 
-        cuisine type: ${cuisine},
-        unwanted ingredients: ${unwantedIngredients},  
-        skill level: ${cookingLevel}.
-
-        Format it so each meal is bulleted and on a seperate line.
-        For each new day label it with "Day X:" in bold and then create a new line.
-        Each day should have breakfast, lunch, and dinner. Add at least one snack for each day.`
-
-
+            // Navigate to the results page
+            navigate("/Results");
         
-        axios
-            .post("https://apiserver-dot-bhealth-cloud.uk.r.appspot.com/api/post-prompt", { prompt })
-            .then((res) => {
-                setResponse(res.data)
-            })
-            .catch((err) => {
-                console.error(err) 
-            })
+            try {
+              const prompt = `Create a 5 day meal plan with the following criteria: 
+                diet: ${diet}, 
+                main goal of the meal plan: ${betterHealthHelp},
+                allergies: ${allergies}, 
+                cuisine type: ${cuisine},
+                unwanted ingredients: ${unwantedIngredients},  
+                skill level: ${cookingLevel}.
+              
+                Format it so each meal is bulleted and on a separate line.
+                For each new day label it with "Day X:" in bold and then create a new line.
+                Each day should have breakfast, lunch, and dinner. Add at least one snack for each day.`;
         
-        navigate('/Results') 
-    }
+              setIsLoading(true);
+              const res = await axios.post("https://apiserver-dot-bhealth-cloud.uk.r.appspot.com/api/post-prompt", { prompt });
+              setResponse(res.data);
+        
+              // Store quiz results in Firestore
+              if (user) {
+                await addQuizResult(user.uid, diet, betterHealthHelp, allergies, cuisine, unwantedIngredients, cookingLevel, res.data);
+              }
+          
+              navigate("/Results");
+            } catch (err) {
+              console.error(err);
+            }
+          };
+          
+
+          
+          
 
     /*
     const mockSubmit = () => {

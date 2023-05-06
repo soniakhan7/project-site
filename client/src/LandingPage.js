@@ -68,6 +68,12 @@ function Home () {
             <div>
                 <Link className="quiz-cta-btn" to="/QuizFront"> Take the quiz </Link>
             </div>
+            <div>
+                <Link className="quiz-cta-btn" to="/Login"> Login </Link>
+            </div>
+            {/* <div>
+                <Link className="quiz-cta-btn" to="/Logout"> Logout </Link>
+            </div> */}
         </div>
     </div>
 
