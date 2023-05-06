@@ -1,0 +1,43 @@
+.account-history-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+  }
+  
+  .account-history-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .account-history-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .account-history-container li {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .account-history-container li p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .account-history-container li p:first-of-type {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+
+  .account-history-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
