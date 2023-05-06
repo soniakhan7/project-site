@@ -17,22 +17,41 @@ function Quiz({name, setName, setResponse}) {
     let navigate = useNavigate()
 
 
-    const handleChange = (addition, arr, setter) => { 
-        /*if(arr[0] === 'no allergies ' || arr[0] === 'no preference ') {
-            setMessage('You cannot have multiple values with the value already set')
+    const handleChange = (addition, arr, setter, id) => { 
+        if(arr.length === 0) {
+            const next_arr = [...arr, addition]
+            setter(next_arr)
+            return 
+        }
+
+        if((arr[0].substr(0, 3) === "No ") && addition !== arr[0]) {
+            document.getElementById(id).checked = false;
+            setMessage('You cannot select more options with the option currently selected.')
             setButtonPopup(true)
             return
-        }*/
-        for(let i = 0; i < arr.length; i++) {
-            if(arr[i] === addition + ", ") {
-                const new_arr = arr.filter(item => item !== arr[i])
-                setter(new_arr);
+        }
+        
+        if(arr[0].substr(0, 3) !== 'No ' && addition.substr(0, 3) === 'No ') {
+            document.getElementById(id).checked = false;
+            setMessage('You cannot add this option with the option(s) already set.')
+            setButtonPopup(true)
+            return
+        }
+        for(let i = 0; i <= arr.length; i++) {
+            if(arr[i] === ", " + addition || arr[0] === addition) {
+                var new_arr = arr.filter(item => item !== arr[i])
+                if(i === 0 && new_arr.length > 0) {
+                    var newElement = new_arr[0].slice(2, new_arr[0].length)
+                    new_arr[0] = newElement
+                }
+                setter(new_arr)
                 return
             }   
         }
-        const next_arr = [...arr, addition + ", "];
-        setter(next_arr) 
-    }
+        
+            const next_arr = [...arr, ", " + addition];
+            setter(next_arr) 
+        }
 
 
 
@@ -188,39 +207,39 @@ function Quiz({name, setName, setResponse}) {
         <div class="checkbox-group">
             <h3>4. Do you have any food allergies?</h3>
             <input type="checkbox" id="allergy1" name="allergies" value="gluten-free"
-            onClick={() => handleChange('gluten-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Gluten-free', allergies, setAllergy, "allergy1")}/>
             <label for="allergy1">Gluten-free</label>
 
             <input type="checkbox" id="allergy2" name="allergies" value="tree-nut-free"
-            onClick={() => handleChange('tree-nut-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Tree-nut-free', allergies, setAllergy, "allergy2")}/>
             <label for="allergy2">Tree nut-free</label>
 
             <input type="checkbox" id="allergy3" name="allergies" value="peanut-free"
-            onClick={() => handleChange('peanut-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Peanut-free', allergies, setAllergy, "allerg30")}/>
             <label for="allergy3">Peanut-free</label>
 
             <input type="checkbox" id="allergy4" name="allergies" value="dairy-free"
-            onClick={() => handleChange('dairy-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Dairy-free', allergies, setAllergy, "allergy4")}/>
             <label for="allergy4">Dairy-free</label>
 
             <input type="checkbox" id="allergy5" name="allergies" value="seafood-free"
-            onClick={() => handleChange('seafood-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Seafood-free', allergies, setAllergy, "allergy5")}/>
             <label for="allergy5">Seafood-free</label>
 
             <input type="checkbox" id="allergy6" name="allergies" value="soybean-free"
-            onClick={() => handleChange('soybean-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Soybean-free', allergies, setAllergy, "allergy6")}/>
             <label for="allergy6">Soybean-free</label>
 
             <input type="checkbox" id="allergy7" name="allergies" value="egg-free"
-            onClick={() => handleChange('egg-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Egg-free', allergies, setAllergy, "allergy7")}/>
             <label for="allergy7">Egg-free</label>
 
             <input type="checkbox" id="allergy8" name="allergies" value="sesame-free"
-            onClick={() => handleChange('sesame-free', allergies, setAllergy)}/>
+            onClick={() => handleChange('Seasame-free', allergies, setAllergy, "allergy8")}/>
             <label for="allergy8">Sesame-free</label><br/>
 
             <input type="checkbox" id="allergy0" name="allergies" value="no allergies"
-            onClick={() => handleChange('no allergies', allergies, setAllergy)}/>
+            onClick={() => handleChange('No allergies', allergies, setAllergy, "allergy0")}/>
             <label for="allergy0">I don't have any allergies.</label>
         </div>
 
@@ -228,45 +247,45 @@ function Quiz({name, setName, setResponse}) {
             <h3>5. What ingredients do you not want in your meal plan?</h3>
 
             <div class="dropdown-select" onClick={() => {setOpen(!open)}}>
-                <span class="selected-options">Select options</span>
+                <span class="selected-options">{unwantedIngredients.length === 0 ? "Select Options" : unwantedIngredients}</span>
                 <i class="fa fa-chevron-down"></i>
             </div>
             <div className={`dropdown-options ${open ? 'inactive' : 'active'}`}>
-                <label><input type="checkbox" name="ingredients" value="no preference"
-                onClick={() => handleChange('no preference', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="no preference" id="ingredient1"
+                onClick={() => handleChange('No preference', unwantedIngredients, setIngredients, "ingredient1")}
                 />No preference</label>
-                <label><input type="checkbox" name="ingredients" value="mustard"
-                onClick={() => handleChange('mustard', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Mustard" id="ingredient2"
+                onClick={() => handleChange('Mustard', unwantedIngredients, setIngredients , "ingredient2")}
                 />Mustard</label>
-                <label><input type="checkbox" name="ingredients" value="tomatoes"
-                onClick={() => handleChange('tomatoes', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Tomatoes" id="ingredient3"
+                onClick={() => handleChange('Tomatoes', unwantedIngredients, setIngredients , "ingredient3")}
                 />Tomatoes</label>
-                <label><input type="checkbox" name="ingredients" value="olives"
-                onClick={() => handleChange('olives', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Olives" id="ingredient4" 
+                onClick={() => handleChange('Olives', unwantedIngredients, setIngredients, "ingredient4")}
                 />Olives</label>
-                <label><input type="checkbox" name="ingredients" value="avocado"
-                onClick={() => handleChange('avocado', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Avocado" id="ingredient5"
+                onClick={() => handleChange('Avocado', unwantedIngredients, setIngredients, "ingredient5")}
                 />Avocado</label>
-                <label><input type="checkbox" name="ingredients" value="beets"
-                onClick={() => handleChange('beets', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Beets" id="ingredient6"
+                onClick={() => handleChange('Beets', unwantedIngredients, setIngredients, "ingredient6")}
                 />Beets</label>
-                <label><input type="checkbox" name="ingredients" value="beef"
-                onClick={() => handleChange('beef', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Beef" id="ingredient7"
+                onClick={() => handleChange('Beef', unwantedIngredients, setIngredients, "ingredient7")}
                 />Beef</label>
-                <label><input type="checkbox" name="ingredients" value="pork"
-                onClick={() => handleChange('pork', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Pork" id="ingredient8"
+                onClick={() => handleChange('Pork', unwantedIngredients, setIngredients, "ingredient8")}
                 />Pork</label>
-                <label><input type="checkbox" name="ingredients" value="cilantro"
-                onClick={() => handleChange('cilantro', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Cilantro" id="ingredient9"
+                onClick={() => handleChange('Cilantro', unwantedIngredients, setIngredients, "ingredient9")}
                 />Cilantro</label>
-                <label><input type="checkbox" name="ingredients" value="mayonnaise"
-                onClick={() => handleChange('mayonnaise', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Mayonnaise" id="ingredient10"
+                onClick={() => handleChange('Mayonnaise', unwantedIngredients, setIngredients, "ingredient10")}
                 />Mayonaise</label>
-                <label><input type="checkbox" name="ingredients" value="eggs"
-                onClick={() => handleChange('eggs', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Eggs" id="ingredient11"
+                onClick={() => handleChange('Eggs', unwantedIngredients, setIngredients, "ingredient11")}
                 />Eggs</label>
-                <label><input type="checkbox" name="ingredients" value="coconut"
-                onClick={() => handleChange('coconut', unwantedIngredients, setIngredients)}
+                <label><input type="checkbox" name="ingredients" value="Coconut" id="ingredient12"
+                onClick={() => handleChange('Coconut', unwantedIngredients, setIngredients, "ingredient12")}
                 />Coconut</label>
 
             </div>
@@ -275,46 +294,47 @@ function Quiz({name, setName, setResponse}) {
         <div class="checkbox-group">
             <h3>6. What cuisine types are you interested in?</h3>
             <input type="checkbox" id="cuisine1" name="cuisine" value="american"
-            onClick={() => handleChange('American', cuisine, setCusine)}/>
+            onClick={() => handleChange('American', cuisine, setCusine, 'cuisine1')}/>
             <label for="cuisine1">American</label>
 
             <input type="checkbox" id="cuisine2" name="cuisine" value="kid-friendly"
-            onClick={() => handleChange('kid-friendly', cuisine, setCusine)}/>
+            onClick={() => handleChange('kid-friendly', cuisine, setCusine, 'cuisine2')}/>
             <label for="cuisine2">Kid-friendly</label>
 
             <input type="checkbox" id="cuisine3" name="cuisine" value="asian"
-            onClick={() => handleChange('Asian', cuisine, setCusine)}/>
+            onClick={() => handleChange('Asian', cuisine, setCusine, 'cuisine3')}/>
             <label for="cuisine3">Asian</label>
 
             <input type="checkbox" id="cuisine4" name="cuisine" value="Mexican"
-            onClick={() => handleChange('Mexican', cuisine, setCusine)}/>
+            onClick={() => handleChange('Mexican', cuisine, setCusine, 'cuisine4')}/>
             <label for="cuisine4">Mexican</label>
 
             <input type="checkbox" id="cuisine5" name="cuisine" value="mediterranean"
-            onClick={() => handleChange('Mediterranean', cuisine, setCusine)}/>
+            onClick={() => handleChange('Mediterranean', cuisine, setCusine, 'cuisine5')}/>
             <label for="cuisine5">Mediterranean</label>
 
             <input type="checkbox" id="cuisine6" name="cuisine" value="spanish"
-            onClick={() => handleChange('Spanish', cuisine, setCusine)}/>
+            onClick={() => handleChange('Spanish', cuisine, setCusine, 'cuisine6')}/>
             <label for="cuisine6">Spanish</label>
 
             <input type="checkbox" id="cuisine7" name="cuisine" value="Italian"
-            onClick={() => handleChange('Italian', cuisine, setCusine)}/>
+            onClick={() => handleChange('Italian', cuisine, setCusine, 'cuisine7')}/>
             <label for="cuisine7">Italian</label>
 
             <input type="checkbox" id="cuisine8" name="cuisine" value="french"
-            onClick={() => handleChange('French', cuisine, setCusine)}/>
+            onClick={() => handleChange('French', cuisine, setCusine, 'cuisine8')}/>
             <label for="cuisine8">French</label>
 
             <input type="checkbox" id="cuisine9" name="cuisine" value="barbecue"
-            onClick={() => handleChange('barbecue', cuisine, setCusine)}/>
+            onClick={() => handleChange('Barbecue', cuisine, setCusine, 'cuisine9')}/>
             <label for="cuisine9">Barbecue</label>
 
             <input type="checkbox" id="cuisine10" name="cuisine" value="no preference"
-            onClick={() => handleChange('no preference', cuisine, setCusine)}/>
+            onClick={() => handleChange('No preference', cuisine, setCusine, 'cuisine10')}/>
             <label for="cuisine10">No preference</label>
 
         </div>
+
         <div class="radio-group">
             <h3>7. What is your cooking skill level?</h3>
             <input type="radio" id="level-1" name="cooking-skill" value="beginner"
@@ -335,7 +355,7 @@ function Quiz({name, setName, setResponse}) {
     <div class="faux-footer">
         <h3>Done taking the quiz?</h3>
         <button type="submit" id="submit-button" onClick={handleSubmit}>Submit</button>
-    </div><div>Quiz</div>
+    </div>
     </body>
     </>
     )}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function quizFront () {
     return (
-        <div class="quiz-front">
+        <div className="quiz-front">
             <head>
                 <meta charset="UTF-8"/>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -12,7 +12,7 @@ function quizFront () {
             </head>
 
             <body>
-                <div class="l-quiz-entry">
+                <div class="l-quiz-entry">           
                     <img src={require("./official-assets/form-photo.png")} alt="food"/>
                 </div>
                 <div class="r-quiz-entry">
